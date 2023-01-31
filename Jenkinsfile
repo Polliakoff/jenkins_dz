@@ -5,7 +5,7 @@ pipeline {
         stage('compose') {
             steps {
                 echo '=========================RUN DOCKER COMPOSE========================='
-                sh 'docker-compose up -d'
+                sh 'docker-compose up --build -d'
                 sh 'sleep 5'
             }
         }
