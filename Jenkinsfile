@@ -6,16 +6,14 @@ pipeline {
             steps {
                 echo '=========================RUN DOCKER COMPOSE========================='
                 sh 'docker-compose up -d'
+                sh 'sleep 5'
             }
         }
         stage('verify'){
-            options {
-              timeout(time: 10, unit: 'SECONDS')
-            }
             steps {
                 echo '=========================CHECK OUTPUT========================='
                 echo '==============(may fail if a firewall is enabled)============='
-                sh 'curl --connect-timeout 3 localhost:8090'
+                sh 'curl localhost:8090'
             }
         }
     }
