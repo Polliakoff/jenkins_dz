@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('compose') {
             steps {
-                echo 'Hello World'
+                echo '=========================RUN DOCKER COMPOSE========================='
+                sh 'docker-compose up -d'
+                echo '=========================CHECK OUTPUT========================='
+                sh 'curl localhost:8090'
             }
         }
     }
