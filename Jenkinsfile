@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo '=========================CHECK OUTPUT========================='
                 echo '==============(may fail if a firewall is enabled)============='
-                sh 'curl localhost:8090'
+                sh 'curl --connect-timeout 3 localhost:8090'
             }
         }
     }
